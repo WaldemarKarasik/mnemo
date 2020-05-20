@@ -8,11 +8,7 @@ class SearchDropdown extends Component
 {
     public $search;
     public $words, $wordsCollection;
-    protected $listeners = ['tailClicked'];
     public function mount() {
-    }
-    public function tailClicked() {
-        return dd('clicked');
     }
     public function updatedSearch() {
 

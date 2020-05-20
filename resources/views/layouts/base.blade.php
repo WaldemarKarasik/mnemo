@@ -20,15 +20,17 @@
         <link href="https:://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
         @livewireStyles
         @livewireScripts
+        <script src="{{ mix('js/app.js') }}"></script>
+
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
     <body>
         @include('layouts.navbar')
+
         @yield('body')
-        @include('layouts.footer')
-        <script src="{{ mix('js/app.js') }}"></script>
+
 
 
     </body>

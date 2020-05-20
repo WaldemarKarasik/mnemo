@@ -17,9 +17,9 @@
 
           @foreach($words as $word)
 
-            {{-- @if($wordName == $word->name)
-                <?php continue;?>
-            @endif --}}
+                @if($wordName == $word->name)
+                    <?php continue;?>
+                @endif
             <div class="flex items-center bg-gray-500">
                 <div class="w-4/12">{{$word->name}}</div>
 
@@ -30,7 +30,7 @@
           @endforeach
           </div>
           <div class="flex justify-center">
-          <button wire:click="back">Back</button>
+          <button class="border-2 border-green-500 px-3" wire:click="back">Back</button>
           </div>
         {{-- <a href="{{route('show-word', $word->name)}}" lass="ml-1">View</a> --}}
         </div>
