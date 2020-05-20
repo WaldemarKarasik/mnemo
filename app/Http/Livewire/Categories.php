@@ -4,15 +4,17 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Category;
+use App\Word;
 class Categories extends Component
 {
+    public $listeners=['wordDeleted'];
     public $categories;
+    public $newWord;
     public function mount() {
         $this->categories = Category::with('words')->get();
     }
 
-    public function addWord() {
-        return dd('hel');
+    public function wordDeleted($id) {
 
     }
 

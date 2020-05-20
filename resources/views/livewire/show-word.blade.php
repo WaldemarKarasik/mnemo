@@ -7,18 +7,28 @@
 
           <div class="flex flex-col space-y-2">
           <p class="text-lg">
-              Key: {{$word->word_key}}
+              Key: {{$word->key}}
           </p>
           <p class="text-lg">
             Link: {{$word->link_sentence}}
           </p>
           <div class="font-bold text-xl mb-2 border-b-2">Other words from this category</div>
-          @foreach($wordCategory->words as $word)
-            @if($wordName == $word->name)
+          <div class="flex flex-col">
+
+          @foreach($words as $word)
+
+            {{-- @if($wordName == $word->name)
                 <?php continue;?>
-            @endif
-            {{$word->name}}
+            @endif --}}
+            <div class="flex items-center bg-gray-500">
+                <div class="w-4/12">{{$word->name}}</div>
+
+                <div class="w-6/12">
+                    <a href="{{route('show-word', $word->name)}}"><i class="fas fa-eye text-green-500 ml-1"></i></a>
+                </div>
+            </div>
           @endforeach
+          </div>
           <div class="flex justify-center">
           <button wire:click="back">Back</button>
           </div>

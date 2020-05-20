@@ -17,17 +17,19 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+        <link href="https:://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
         @livewireStyles
-
+        @livewireScripts
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
     <body>
+        @include('layouts.navbar')
         @yield('body')
-
+        @include('layouts.footer')
         <script src="{{ mix('js/app.js') }}"></script>
-        @livewireScripts
+
+
     </body>
 </html>
