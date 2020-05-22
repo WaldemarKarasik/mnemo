@@ -9,6 +9,7 @@ class Words extends Component
 {
     public $category;
     public $words;
+    public $updatedWord;
     public function mount(Category $category) {
         $this->category = $category;
         $this->words = $category->words;
@@ -17,6 +18,12 @@ class Words extends Component
     public function deleteWord($id) {
         Word::where('id', $id)->delete();
         $this->refreshWords();
+    }
+
+    public function updateWord($id) {
+        Word::find($id)->update(['name' => $this->updatedWord]);
+        $this->refreshWords();
+        $this->updatedWord='';
     }
 
     public function refreshWords() {

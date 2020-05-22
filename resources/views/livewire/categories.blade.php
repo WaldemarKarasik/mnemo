@@ -17,7 +17,7 @@
         @endcan --}}
         {{-- @cannot('create', App\Category::class) --}}
         <div>
-            <a class="text-3xl font-semibold"href="{{route('show-category', $category->name)}}">{{$category->name}}</a>
+            <a class="text-3xl font-semibold hover:text-blue-500"href="{{route('show-category', $category->name)}}">{{$category->name}}</a>
         </div>
         {{-- @endcannot --}}
         @livewire('words', compact('category'), key($category->id))

@@ -51,9 +51,11 @@ class WordPolicy
      * @param  \App\Word  $word
      * @return mixed
      */
-    public function update(User $user, Word $word)
+    public function update(User $user)
     {
-        //
+        return in_array($user->email, [
+            'komsomolradio@gmail.com'
+        ]);
     }
 
     /**

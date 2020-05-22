@@ -2,7 +2,7 @@
     {{-- The Master doesn't talk, he acts. --}}
     <div class="md:w-2/6 rounded overflow-hidden shadow-lg">
         <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2 border-b-2">{{$word->name}} - {{$word->definition}}</div>
+          <div class="font-bold text-xl mb-2 border-b-2 pt-2">{{$word->name}} - {{$word->definition}}</div>
           <div class="flex flex-col font-semibold">
 
           <div class="flex flex-col space-y-2">
@@ -20,8 +20,9 @@
                 @if($wordName == $word->name)
                     <?php continue;?>
                 @endif
-            <div class="flex items-center bg-gray-500">
-                <div class="w-4/12">{{$word->name}}</div>
+            <div class="flex items-center ">
+                <div class="w-4/12"><p>{{$word->name}}</p></div>
+
 
                 <div class="w-6/12">
                     <a href="{{route('show-word', $word->name)}}"><i class="fas fa-eye text-green-500 ml-1"></i></a>
@@ -30,7 +31,7 @@
           @endforeach
           </div>
           <div class="flex justify-center">
-          <button class="border-2 border-green-500 px-3" wire:click="back">Back</button>
+          <button class="w-1/3 border-2 border-green-500 px-3 shadow-lg hover:border-green-400 font-semibold focus:outline-none" wire:click="back">Back</button>
           </div>
         {{-- <a href="{{route('show-word', $word->name)}}" lass="ml-1">View</a> --}}
         </div>

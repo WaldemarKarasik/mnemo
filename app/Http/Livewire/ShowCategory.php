@@ -47,6 +47,11 @@ class ShowCategory extends Component
     public function refreshWordsAfterWordAdded() {
         return $this->words = Word::where('category_id', $this->category->id)->get();
     }
+
+    public function back() {
+        return redirect('/');
+    }
+
     public function render()
     {
         return view('livewire.show-category');

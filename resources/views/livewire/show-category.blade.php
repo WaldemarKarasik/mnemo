@@ -22,11 +22,16 @@
               {{$word->name}}
           </p>
         <a href="{{route('show-word', $word->name)}}" class="ml-1 text-green-500"><i class="fas fa-eye"></i></a>
+
         </div>
           @endforeach
+          <div class="flex justify-center">
+            <button class="w-1/3 border-2 border-green-500 px-3 shadow-lg hover:border-green-400 font-semibold focus:outline-none" wire:click="back">Back</button>
+            </div>
         </div>
         </div>
       </div>
+
       <div class="invisible">
         dfd
       </div>

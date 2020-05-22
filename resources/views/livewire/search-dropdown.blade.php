@@ -1,6 +1,6 @@
-<div x-data="{isOpen: true}" @click.away="isOpen = false">
+<div class="w-full md:w-auto md:block" x-data="{isOpen: true}" @click.away="isOpen = false">
     {{-- Do your work, then step back. --}}
-    <input @focus="isOpen = true" class="w-64 focus:outline-none border-2 border-blue-500 rounded-full px-4" type="text" placeholder="Search a word" wire:model="search">
+    <input @focus="isOpen = true" class="w-64 focus:outline-none border-2 border-blue-500 rounded-full px-4" type="text" placeholder="Live search" wire:model="search">
     @if(strlen($search) > 2)
     <div x-show="isOpen" class="absolute rounded w-64">
         <ul class="mt-1">
