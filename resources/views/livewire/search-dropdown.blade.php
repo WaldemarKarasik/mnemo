@@ -2,7 +2,7 @@
     {{-- Do your work, then step back. --}}
     <input @focus="isOpen = true" class="w-64 focus:outline-none border-2 border-blue-500 rounded-full px-4" type="text" placeholder="Live search" wire:model="search">
     @if(strlen($search) > 2)
-    <div x-show="isOpen" class="absolute rounded w-64">
+    <div x-show="isOpen" class="absolute rounded w-64" style="z-index: 40;">
         <ul class="mt-1">
         @if(!empty($words))
         @if($words->count() > 0)
@@ -14,7 +14,7 @@
 
         @endforeach
         @else
-            <li class="py-3 border-2 rounded">
+            <li class="py-3 bg-gray-500 border-2 rounded">
             <p class="block">No words found</p>
             </li>
         @endif
