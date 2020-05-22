@@ -11,7 +11,8 @@
 
             <button @click="{showUpdate = true, $nextTick(()=>$refs.input.focus()) }"><i class="fas fa-edit text-green-300 hover:text-green-500"></i></button>
             <form class="ml-2" wire:submit.prevent="updateWord({{$word->id}})">
-            <input class="w-full" x-ref="input" @click.away="showUpdate = false, showDeleteButton = true" {{$word->name}} x-show="showUpdate" wire:model="updatedWord" type="text">
+            @error('updatedWord') {{$message}} @enderror
+            <input class="w-full border-2 {{($error) ? 'border-red-500 focus:outline-none' : 'border-blue-500'}}" x-ref="input" @click.away="showUpdate = false, showDeleteButton = true, clickedAway()" {{$word->name}} x-show="showUpdate" wire:model="updatedWord" type="text">
             </form>
 
         @endcan
@@ -30,3 +31,10 @@
     @endforeach
     </div>
 </div>
+<script>
+    // Чтобы если бордер инпута красный, после того как юзер кликнул вне инпута сделать стандартный бордер
+    // listener находится в App\Http\Livewire\Words.php
+    function clickedAway() {
+        window.livewire.emit('clickedAway');
+    }
+</script>

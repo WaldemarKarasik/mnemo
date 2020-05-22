@@ -10,6 +10,8 @@ class Words extends Component
     public $category;
     public $words;
     public $updatedWord;
+    public $error;
+    protected $listeners = ['clickedAway'];
     public function mount(Category $category) {
         $this->category = $category;
         $this->words = $category->words;
@@ -19,11 +21,23 @@ class Words extends Component
         Word::where('id', $id)->delete();
         $this->refreshWords();
     }
-
+    // Чтобы убрать красный бордер инпута когда юзер кликает вне инпута
+    public function clickedAway() {
+        $this->error = false;
+    }
+    public function updated($updatedWord, $value) {
+        $this->error = false;
+    }
     public function updateWord($id) {
-        Word::find($id)->update(['name' => $this->updatedWord]);
-        $this->refreshWords();
-        $this->updatedWord='';
+        if(!empty($this->updatedWord)) {
+            Word::find($id)->update(['name' => $this->updatedWord]);
+            $this->refreshWords();
+            $this->updatedWord='';
+            $this->error = false;
+        } else {
+            $this->error = true;
+        }
+
     }
 
     public function refreshWords() {
