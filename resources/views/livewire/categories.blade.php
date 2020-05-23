@@ -2,6 +2,10 @@
     <div class="flex justify-end">
     @livewire('search-dropdown')
     </div>
+    <button x-data @click="@this.call('testing')">{{Auth::user()->name}}</button>
+    @if(Auth::user()->name == 'admin')
+        User is admin
+    @endif
     @foreach($categories as $category)
     <div class="flex flex-col">
         {{-- @can('create', App\Category::class)
@@ -24,3 +28,11 @@
     @endforeach
     </div>
 </div>
+<script>
+    window.livewire.on('reloadRequired', () => {
+        // let component = window.livewire.find('EGnfFDoPEgSR0tLa6GxB');
+        // console.log(component);
+        // var p = component.get('check');
+        // console.log(p);
+    })
+</script>

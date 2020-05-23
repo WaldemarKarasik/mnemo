@@ -10,10 +10,13 @@ class Categories extends Component
     public $listeners=['wordDeleted'];
     public $categories;
     public $newWord;
+    public $check="smth";
     public function mount() {
         $this->categories = Category::with('words')->get();
     }
-
+    public function testing() {
+        return dd('tesitn');
+    }
     public function wordDeleted($id) {
 
     }

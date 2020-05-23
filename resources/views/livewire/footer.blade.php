@@ -1,3 +1,4 @@
+
 <div class="flex justify-between text-gray-100 bg-teal-600 ">
     <div>
     <div class="container py-9">
@@ -25,4 +26,5 @@
         element.removeAttribute('style');
     });
 </script>
+
 
