@@ -18,8 +18,10 @@
         @endcan
         @can('delete', App\Word::class)
             <div x-show="showDeleteButton"class="w-11/12 flex justify-start ml-3">
-                <button wire:click="deleteWord({{$word->id}})"><i class="fas fa-trash text-red-500 hover:text-red-300"></i></button>
+                <button @click="deleteWord({{$word->id}})"><i class="fas fa-trash text-red-500 hover:text-red-300"></i></button>
+
             </div>
+
         @endcan
         @cannot('delete', App\Word::class)
             <div class="w-11/12 flex justify-start">
@@ -36,5 +38,12 @@
     // listener находится в App\Http\Livewire\Words.php
     function clickedAway() {
         window.livewire.emit('clickedAway');
+    }
+    function deleteWord(id) {
+        if(confirm("Are you sure?")) {
+            window.livewire.emit('deleteClicked', id)
+        } else {
+            return ;
+        }
     }
 </script>

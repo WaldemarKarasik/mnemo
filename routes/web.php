@@ -16,14 +16,15 @@ Route::middleware('auth')->group(function () {
     Route::view('/', 'categories')->name('home');
     Route::livewire('category/{category}-show-words', 'show-category')->name('show-category');
     Route::livewire('word/{word}-definition', 'show-word')->name('show-word');
-});
-Route::get('/admin-panel', function() {
-    if (Gate::allows('admin-only')) {
-        return view('admin-panel');
-    } else {
-        return "Your are not admin";
-    }
+    Route::get('/admin-panel', function() {
+        if (Gate::allows('admin-only')) {
+            return view('admin-panel');
+        } else {
+            return "Your are not admin";
+        }
 })->name('admin-panel');
+
+});
 Route::middleware('guest')->group(function () {
     Route::view('login', 'auth.login')->name('login');
     Route::view('register', 'auth.register')->name('register');

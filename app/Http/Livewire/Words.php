@@ -11,13 +11,13 @@ class Words extends Component
     public $words;
     public $updatedWord;
     public $error;
-    protected $listeners = ['clickedAway'];
+    protected $listeners = ['clickedAway', 'deleteClicked'];
     public function mount(Category $category) {
         $this->category = $category;
         $this->words = $category->words;
     }
 
-    public function deleteWord($id) {
+    public function deleteClicked($id) {
         Word::where('id', $id)->delete();
         $this->refreshWords();
     }

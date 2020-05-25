@@ -10,6 +10,7 @@ class ShowCategory extends Component
     public $category, $fullCategory, $words;
     public $newWordName, $key, $link, $definition;
     public $errorN, $errorD, $errorK, $errorL;
+    protected $listeners = ['deleteAllClicked'];
     public function mount($category) {
         $this->category = Category::where('name', $category)->first();
         $this->fullCategory = Category::where('id', $this->category->id)->get();
@@ -47,7 +48,13 @@ class ShowCategory extends Component
     public function refreshWordsAfterWordAdded() {
         return $this->words = Word::where('category_id', $this->category->id)->get();
     }
+    public function deleteAllClicked() {
+        Word::where('category_id', $this->category->id)->delete();
 
+        // Word::update(['category_id' => 0]);
+        // Word::truncate();
+        $this->refreshWordsAfterWordAdded();
+    }
     public function back() {
         return redirect('/');
     }

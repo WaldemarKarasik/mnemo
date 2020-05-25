@@ -2,10 +2,6 @@
     <div class="flex justify-end">
     @livewire('search-dropdown')
     </div>
-    <button x-data @click="@this.call('testing')">{{Auth::user()->name}}</button>
-    @if(Auth::user()->name == 'admin')
-        User is admin
-    @endif
     @foreach($categories as $category)
     <div class="flex flex-col">
         {{-- @can('create', App\Category::class)
@@ -20,11 +16,13 @@
         </div>
         @endcan --}}
         {{-- @cannot('create', App\Category::class) --}}
-        <div>
+        <div class="flex space-x-3">
             <a class="text-3xl font-semibold hover:text-blue-500"href="{{route('show-category', $category->name)}}">{{$category->name}}</a>
         </div>
+
         {{-- @endcannot --}}
         @livewire('words', compact('category'), key($category->id))
+
     @endforeach
     </div>
 </div>

@@ -5,7 +5,8 @@
           @can('create', App\Category::class)
                 <button x-show="showButton" @click="{showInput = !showInput, showButton = false, showHideButton = true}">Add</button>
                 <button x-show="showHideButton" @click="{showInput = !showInput, showHideButton = !showHideButton, showButton = true}">Hide</button>
-                <div x-show="showInput" class="">
+                <button class="border-1 border-l border-black px-1 text-red-600" @click="deleteAllClicked()">Delete all</button>
+                <div x-show="showInput" @click.away="" class="">
                 <div>@error('newWordName') {{$message}}@enderror</div>
                 <input class="{{($errorN) ? 'border-2 border-red-500' : 'border-2 border-blue-500'}} "wire:model = "newWordName" type="text" placeholder="Name">
                 <input class="{{($errorD) ? 'border-2 border-red-500' : 'border-2 border-blue-500'}}  mt-2"wire:model = "definition" type="text" placeholder="Definition">
@@ -42,3 +43,13 @@
         dfd
       </div>
 </div>
+<script>
+
+    function deleteAllClicked() {
+        if(confirm("Are you sure?")) {
+            window.livewire.emit('deleteAllClicked')
+        } else {
+            return ;
+        }
+    }
+</script>
