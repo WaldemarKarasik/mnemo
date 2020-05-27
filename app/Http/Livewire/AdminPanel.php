@@ -22,6 +22,7 @@ class AdminPanel extends Component
     }
     public function removeError() {
         $this->resetErrorBag('message');
+        $this->categoryName = '';
         $this->emptyError = false;
     }
     public function enterDeletePressed() {
@@ -38,6 +39,7 @@ class AdminPanel extends Component
             $er = Category::where('name', $this->categoryName)->delete();
             if($er == 0) {
                 $this->addError('message', 'Category not found');
+                $this->emit('hideInput');
                 $this->emptyError = true;
             } else {
                 $this->emit('refreshRequired');
@@ -49,6 +51,7 @@ class AdminPanel extends Component
             //     $this->emit('refreshRequired');
             // }
         } else {
+
             $this->emptyError = true;
         }
     }
